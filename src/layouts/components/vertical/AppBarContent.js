@@ -13,10 +13,13 @@ import Magnify from 'mdi-material-ui/Magnify'
 import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler'
 import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown'
 import NotificationDropdown from 'src/@core/layouts/components/shared-components/NotificationDropdown'
+import Button from '@mui/material/Button'
+import { useAuth } from 'src/pages/lib/auth'
 
 const AppBarContent = props => {
   // ** Props
   const { hidden, settings, saveSettings, toggleNavVisibility } = props
+  const { signOut } = useAuth()
 
   // ** Hook
   const hiddenSm = useMediaQuery(theme => theme.breakpoints.down('sm'))
@@ -62,6 +65,10 @@ const AppBarContent = props => {
           </Box>
         )}
         <ModeToggler settings={settings} saveSettings={saveSettings} />
+        {/* <Button onClick={()=>{
+          console.log("Signout clied")
+          signOut()
+        }}>Signout</Button> */}
         <NotificationDropdown />
         <UserDropdown />
       </Box>

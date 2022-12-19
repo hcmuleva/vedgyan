@@ -23,7 +23,6 @@ import AccountOutline from 'mdi-material-ui/AccountOutline'
 import MessageOutline from 'mdi-material-ui/MessageOutline'
 import HelpCircleOutline from 'mdi-material-ui/HelpCircleOutline'
 // ** Logout 
-import { useSession, signOut } from "next-auth/react"
 import { useAuth } from 'src/pages/lib/auth'
 import { PROFILE_QUERY } from 'src/pages/api/graphql/query/profile'
 import { useQuery } from '@apollo/client'
@@ -38,6 +37,7 @@ const BadgeContentSpan = styled('span')(({ theme }) => ({
 }))
 
 const UserDropdown = () => {
+  console.log("GGD")
   const [anchorEl, setAnchorEl] = useState(null)
   const router = useRouter()
 
@@ -185,7 +185,6 @@ const UserDropdown = () => {
         <Divider />
         <MenuItem sx={{ py: 2 }} onClick={() => {
           if (isSignedIn()) {
-            handleDropdownClose('/pages/login')
             signOut()
             
           }

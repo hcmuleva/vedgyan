@@ -18,8 +18,9 @@ export const useAuth = () => {
 }
 
 function useProvideAuth() {
+    const [user,setUser] = useState(null)
   const [authToken, setAuthToken] = useState(null)
-  const [user,setUser] = useState(null)
+  
   const getAuthHeaders = () => {
     if (!authToken) return null
 
@@ -30,7 +31,7 @@ function useProvideAuth() {
 
   function createApolloClient() {
     const link = new HttpLink({
-      uri: 'http://localhost:1337/graphql',
+      uri: `${process.env.NEXT_PUBLIC_ENV_STRAPI_GRAPHQL}`,
       headers: getAuthHeaders()
     })
 
@@ -40,9 +41,6 @@ function useProvideAuth() {
     })
   }
 
-  const signOut = () => {
-    setAuthToken(null)
-  }
 
   const signIn = async ({ identifier, password }) => {
     const client = createApolloClient()
@@ -53,14 +51,12 @@ function useProvideAuth() {
           user {
             id
             username
-            role {
-              id
-              name
-            }
+            
           }
         }
       }
     `
+
     const result = await client.mutate({
       mutation: LoginMutation,
       variables: { identifier, password }
@@ -69,6 +65,8 @@ function useProvideAuth() {
     console.log("Is it resolved",result)
     if(result){
         console.log("inside first if",result.data.login.jwt)
+        localStorage.setItem('jwt',result.data.login.jwt)
+        localStorage.setItem('user',JSON.stringify(result.data.login.user))
         setAuthToken(result.data.login.jwt)
         setUser(result.data.login.user)
         return {jwt:result.data.login.jwt, user:result.data.login.user}
@@ -80,20 +78,41 @@ function useProvideAuth() {
   }
 
   const isSignedIn = () => {
-    if (authToken) {
+    if (typeof window !== 'undefined') {
+       const  usertoken=localStorage.getItem('jwt')
+    if (authToken||usertoken) {
       return true
     } else {
       return false
     }
+    }
+    //  if (authToken) {
+    //   return true
+    // } else {
+    //   return false
+    // }
+    
+  }
+  
+  const signOut = () => {
+    if (typeof window !== 'undefined') {
+        localStorage.removeItem('jwt')
+        localStorage.removeItem('user')
+    }
+    setAuthToken(null)
   }
   const getUser =()=>{
-    if(authToken){
-        return user
-    }else {
-        return null
-    }
+    if (typeof window !== 'undefined') {
+        const  usertoken=localStorage.getItem('jwt')
+        const user=localStorage.getItem('user')
+        console.log("user",user)
+     if (user) {
+       return JSON.parse(user)
+     } else {
+       return false
+     }
   }
-
+  }
   return {
     createApolloClient,
     signIn,

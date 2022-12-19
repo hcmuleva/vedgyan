@@ -30,8 +30,6 @@ import Facebook from 'mdi-material-ui/Facebook'
 import EyeOutline from 'mdi-material-ui/EyeOutline'
 import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
 // ** Authentication component
-import { NextPage } from "next";
-//import { signIn } from "next-auth/react";
 //import { useAuth } from '../lib/auth.js'
 
 // ** Configs
@@ -97,11 +95,13 @@ const LoginPage = () => {
       redirect: false,
     }
     console.log("payload",payload)
-    const res =  await signIn(payload);
+    const res =  await signIn(payload)
     console.log("LOGing response",res)
     if(res){
       console.log("res.data.login",res.user)
       router.push("/")
+    }else {
+
     }
     console.log("Login Response ",res);
   };
