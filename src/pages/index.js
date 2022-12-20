@@ -23,39 +23,17 @@ import DepositWithdraw from 'src/views/dashboard/DepositWithdraw'
 import SalesByCountries from 'src/views/dashboard/SalesByCountries'
 
 // ** Protection
-import { NextPage } from "next";
-//import { useSession } from "next-auth/react";
+//import { NextPage } from "next";
 import Router from "next/router";
 import { useEffect } from "react";
 import { useAuth } from './lib/auth'
 const Dashboard = () => {
   const { isSignedIn,getUser } = useAuth()
-//useEffect((!isSignedIn)=>{
-  
-//   Router.replace("/pages/login")
-// },[isSignedIn])
-//   const { status, data } = useSession();
-  console.log("isSignedIn",isSignedIn())
-  console.log("get User ",getUser())
-
   useEffect(() => {
     if (!isSignedIn()) Router.replace("/pages/login");
     
   }, [isSignedIn()]);
-//   if(status ==='loading'){
-//     return <h3>Loading</h3>
-//   }
-//   console.log("Session ", status, " and Data",data.token.user.user.id)
 
-
-//   if (status === "authenticated"){
-// return (
-//     <div>
-//       This page is Protected for special people. like{"\n"}
-//       {JSON.stringify(data.user, null, 2)}
-//     </div>
-//   );
-//   }
   
   return (
     <ApexChartWrapper>

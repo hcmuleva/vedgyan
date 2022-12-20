@@ -24,9 +24,7 @@ function ExamList() {
   if(examLoading){
     return <h2>exam is loading</h2>
   }
-  console.log("ExamData",examData.exams.data)
   const getCard=(exam)=>{
-    console.log("CAlLED")
    return  (  <ExamCard
             id={exam.id}
           stats='$25.6k'

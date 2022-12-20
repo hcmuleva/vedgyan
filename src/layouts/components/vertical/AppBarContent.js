@@ -66,7 +66,6 @@ const AppBarContent = props => {
         )}
         <ModeToggler settings={settings} saveSettings={saveSettings} />
         {/* <Button onClick={()=>{
-          console.log("Signout clied")
           signOut()
         }}>Signout</Button> */}
         <NotificationDropdown />

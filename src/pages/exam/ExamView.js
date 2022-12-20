@@ -6,7 +6,6 @@ import ExamList from './ExamList'
 function ExamView() {
     const { getCompName,updateCompName } = useExam()
     const compData=getCompName()
-    console.log("comp ExamView", compData)
   return (
     <div>ExamView
         <Button onClick={()=>{ updateCompName({comp:'SUBJECT',details:{}})}}>Subject</Button>

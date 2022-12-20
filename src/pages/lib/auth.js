@@ -62,9 +62,7 @@ function useProvideAuth() {
       variables: { identifier, password }
     })
 
-    console.log("Is it resolved",result)
     if(result){
-        console.log("inside first if",result.data.login.jwt)
         localStorage.setItem('jwt',result.data.login.jwt)
         localStorage.setItem('user',JSON.stringify(result.data.login.user))
         setAuthToken(result.data.login.jwt)
@@ -105,7 +103,6 @@ function useProvideAuth() {
     if (typeof window !== 'undefined') {
         const  usertoken=localStorage.getItem('jwt')
         const user=localStorage.getItem('user')
-        console.log("user",user)
      if (user) {
        return JSON.parse(user)
      } else {

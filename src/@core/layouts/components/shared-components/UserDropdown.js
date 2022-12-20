@@ -37,19 +37,15 @@ const BadgeContentSpan = styled('span')(({ theme }) => ({
 }))
 
 const UserDropdown = () => {
-  console.log("GGD")
   const [anchorEl, setAnchorEl] = useState(null)
   const router = useRouter()
 
   const { signOut,isSignedIn,getUser } = useAuth()
-  console.log("isSigned", isSignedIn())
-  console.log("User id from dropdown", getUser())
   const user = getUser()
   if(!user||!isSignedIn()){
    return ""
   }
   if(user){
-    console.log("Drop down ", user)
   } else {return ""}
   const { data:profileData,loading:profileLoading, error:profileError } = useQuery(PROFILE_QUERY,{ variables: { id: getUser().id } })
   if(profileError){
@@ -59,10 +55,8 @@ const UserDropdown = () => {
     return <h2>Profile is loading</h2>
   }
   const profileForDisplay={firstname:"First",lastname:"LastName",role:"USER", url:"/images/avatars/1.png"}
-  console.log("DDDd",profileData.profiles.data[0].attributes)
   if(profileData.profiles.data.length>0){
     const attrb=profileData.profiles.data[0].attributes
-    console.log("attrb",attrb)
     profileForDisplay.firstname=attrb.firstname
     profileForDisplay.lastname=attrb.lastname
     if(attrb&&attrb.photo.data&&attrb.photo.data.attributes){
@@ -72,7 +66,6 @@ const UserDropdown = () => {
     
   
   }
-  console.log("DATA for profile is ", profileData.profiles.data[0].attributes)
   // ** States
 
   // ** Hooks
@@ -82,7 +75,6 @@ const UserDropdown = () => {
   }
 
   const handleDropdownClose = url => {
-    console.log("url ",url)
     if (url) {
       router.push(url)
     }

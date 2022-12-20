@@ -14,7 +14,7 @@ export const useExam = () => {
 function useProvideExam(){
     const [examData,setExamData]=useState("")
     const [ansData,setAnsData]= useState("")
-    const [compName,setCompName] = useState({comp:'QUIZ', "details":{"id":1}})
+    const [compName,setCompName] = useState({comp:'RESULT', "details":{"id":1}})
     const getCompName=()=>{return compName}
     const updateCompName=(name)=>{
         setCompName(name)

@@ -94,16 +94,12 @@ const LoginPage = () => {
       password: values.password,
       redirect: false,
     }
-    console.log("payload",payload)
     const res =  await signIn(payload)
-    console.log("LOGing response",res)
     if(res){
-      console.log("res.data.login",res.user)
       router.push("/")
     }else {
 
     }
-    console.log("Login Response ",res);
   };
   return (
     <Box className='content-center'>

@@ -23,7 +23,6 @@ function SubjectList() {
   if(subjectLoading){
     return <h2>subject is loading</h2>
   }
-    console.log("SubjectList",subjectData.subjects)
     const getComponent = (name, classname)=>{
        return <SubjectCard name={name} classname={classname}/>
     }

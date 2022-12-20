@@ -30,7 +30,7 @@ const QueCard = ({qb, index,handleAnserOptopns}) => {
               <RadioGroup row aria-label={id + '' + quetitle} name={id + '' + quetitle}>
                 {options.map((opt, index) => (
                     <Grid container spacing={6}>
-                         <Grid item xs={6} md={4}>
+                         <Grid item xs={12} md={4}>
                   <FormControlLabel value={index} label={'' + opt.option} control={<Radio  onChange={()=>handleAnserOptopns(number,index,opt.option,'SC',options)}/>} />
                   </Grid>
                   </Grid>
@@ -45,9 +45,10 @@ const QueCard = ({qb, index,handleAnserOptopns}) => {
         const quetype ="(MCQ)"
     
         return(<>
-          <Typography>Que<b>{number+1}</b>:{quetitle} {quetype}</Typography>
+          <Typography id={number}>Que<b>{number+1}</b>:{quetitle} {quetype}</Typography>
           {options.map((opt, index) => (
             <FormControlLabel
+            id={index}
             label={'' + opt.option}
             onChange={()=>handleAnserOptopns(number,index,opt.option, 'MCQ',options)}
             control={<Checkbox name={id+quetitle}/>}

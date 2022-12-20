@@ -16,32 +16,32 @@ const FooterContent = () => {
           ❤️
         </Box>
         {` by `}
-        <Link target='_blank' href='https://themeselection.com/'>
-          ThemeSelection
+        <Link target='_blank' href='https://eksamaj.in/'>
+          Harish Muleva
         </Link>
       </Typography>
       {hidden ? null : (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', '& :not(:last-child)': { mr: 4 } }}>
           <Link
             target='_blank'
-            href='https://github.com/themeselection/materio-mui-react-nextjs-admin-template-free/blob/main/LICENSE'
+            href='https://eksamaj.in/exam'
           >
-            MIT License
+            Register for Education
           </Link>
-          <Link target='_blank' href='https://themeselection.com/'>
-            More Themes
-          </Link>
-          <Link
-            target='_blank'
-            href='https://github.com/themeselection/materio-mui-react-nextjs-admin-template-free/blob/main/README.md'
-          >
-            Documentation
+          <Link target='_blank' href='https://emeelan.in/'>
+            Register for marriage
           </Link>
           <Link
             target='_blank'
-            href='https://github.com/themeselection/materio-mui-react-nextjs-admin-template-free/issues'
+            href='https://github.com/hcmuleva'
           >
-            Support
+            JOB Opportunity
+          </Link>
+          <Link
+            target='_blank'
+            href='https://eksamaj.in'
+          >
+            Carrier Counselling 
           </Link>
         </Box>
       )}

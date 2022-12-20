@@ -15,7 +15,6 @@ const ExamCard = props => {
   // ** Props
   const { updateCompName } = useExam()
 
-  console.log("props of Examcard",props)
   const { id,title, subtitle, color, icon, stats, trend, trendNumber } = props
 
   return (
@@ -44,7 +43,6 @@ const ExamCard = props => {
           </Typography>
         </Box>
         <Button onClick={()=>{
-            console.log("Exam Clicked ", title, " and id ", id)
             updateCompName({comp:'QUIZ',"details":{"name":title, "id":id}})
         }}>Start</Button>
       </CardContent>
